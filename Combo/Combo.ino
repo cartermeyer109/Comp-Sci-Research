@@ -13,9 +13,9 @@ SunSensor sun = SunSensor(A0, 12); //(sunPin, resetPin)
 //Soil Moisture Sensor Object
 SoilSensor moisture = SoilSensor(A1, 52); //(soilPin, soilPower)
 
-//Sleep class is an abstract class
+//Sleep is a static class
 
-//Clock is an abstract class
+//Clock is a static class
 
 //SD Card Reader Object
 SDCard memoryCard = SDCard(53); //(chipSelectPin)
