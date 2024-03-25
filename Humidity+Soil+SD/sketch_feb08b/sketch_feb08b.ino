@@ -157,7 +157,7 @@ void loop() {
   Serial.println(readSoil());
 
   //***********************************************************88
-  
+  //Humidity Loop
   
   float t = sht31.readTemperature();
   float h = sht31.readHumidity();
