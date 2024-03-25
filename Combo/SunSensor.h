@@ -5,8 +5,8 @@ class SunSensor {
 public:
 //DATA MEMBERS
   int sunPin;
-  int sunVal;
   int resetPin;
+  int sunVal;
   
 //*************************************************************************
 //CONSTRUCTORS
@@ -22,9 +22,10 @@ public:
   
 //*************************************************************************
 //MEMBER FUNCTIONS
+  //To be called in setup
   void initialize() {
-    digitalWrite(resetPin, HIGH);
     pinMode(resetPin, OUTPUT);
+    digitalWrite(resetPin, HIGH);
   }
   
   //Sets all the pins
@@ -35,11 +36,12 @@ public:
 
   //Instantly returns the sunlight value being gathered
   //by the sun sensor after printing it to serial
-  void printSunlight(){
+  int readSunlight(){
     sunVal = analogRead(sunPin);
     Serial.print("Sunlight Level: ");
     Serial.println(sunVal);
     //delay(1000);
+    return sunVal;
   }
 
   //Turns reset pin to low after 10 seconds
