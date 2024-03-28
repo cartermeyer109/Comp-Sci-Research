@@ -5,7 +5,7 @@ class SunSensor {
 public:
 //DATA MEMBERS
   int sunPin;
-  int resetPin;
+  int sunPower;
   int sunVal;
   
 //*************************************************************************
@@ -14,24 +14,24 @@ public:
   SunSensor() {
     sunPin = 0;
     sunVal = 0;
-    resetPin = 0;
+    sunPower = 0;
   }
   
-  //constructor that sets sunPin and resetPin
-  SunSensor(int sp, int rp):sunPin(sp), resetPin(rp){sunVal = 0;}
+  //constructor that sets sunPin and sunPower
+  SunSensor(int sp, int rp):sunPin(sp), sunPower(rp){sunVal = 0;}
   
 //*************************************************************************
 //MEMBER FUNCTIONS
   //To be called in setup
   void initialize() {
-    pinMode(resetPin, OUTPUT);
-    digitalWrite(resetPin, HIGH);
+    pinMode(sunPower, OUTPUT);
+    digitalWrite(sunPower, HIGH);
   }
   
   //Sets all the pins
   void setPins(int sp, int rp) {
     sunPin = sp;
-    resetPin = rp;
+    sunPower = rp;
   }
 
   //Instantly returns the sunlight value being gathered
@@ -44,11 +44,11 @@ public:
     return sunVal;
   }
 
-  //Turns reset pin to low after 10 seconds
-  void resetDevice(){
+  //Turns reset pin to low after 10 seconds, to be implimented later on all devices
+  void setLow(){
     Serial.println("resetting sun sensor");
     delay(10000);
-    digitalWrite(resetPin, LOW);
+    digitalWrite(sunPower, LOW);
     Serial.println("If you see this it not work");
   }
 };

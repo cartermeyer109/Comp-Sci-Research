@@ -12,7 +12,7 @@
 
 //SunSensorPins
 int sunPin = A0;
-int resetPin = 12;
+int sunPower = 12;
 
 //SoilMoisturePins
 int soilPin = A1;
@@ -29,7 +29,7 @@ int clockPin = 11;
 //OBJECTS
 
 //Sun Sensor Object 
-SunSensor sun = SunSensor(sunPin, resetPin);
+SunSensor sun = SunSensor(sunPin, sunPower);
 
 //Soil Moisture Sensor Object
 SoilSensor moisture = SoilSensor(soilPin, soilPower);
@@ -69,7 +69,7 @@ void loop() {
   //Sun Sensor Loop
   sun.readSunlight();
   delay(1000);
-  sun.resetDevice();
+  sun.setLow();
 
   //Soil Moisture Loop
   moisture.readMoisture();
