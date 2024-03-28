@@ -1,10 +1,10 @@
 #include <Wire.h>
 #include "Adafruit_SHT31.h"
 
-//A class to store humidity vars and
+//A class to store air humidity vars and
 //functions. Multiple class instances can be created
-//to use SD cards/readers
-class HumiditySensor {
+//to use multiple air humidity sensor
+class AirHumiditySensor {
 public:
 //DATA MEMBERS
   bool enableHeater;
@@ -14,7 +14,7 @@ public:
 //*************************************************************************
 //CONSTRUCTORS
   //default constructor
-  HumiditySensor() {}
+  AirHumiditySensor() {}
   
 //*************************************************************************
 //MEMBER FUNCTIONS
@@ -26,7 +26,7 @@ public:
       while (1) delay(1);
     }
     else {
-      Serial.println("Humidity Tester Initialized");
+      Serial.println("Air Humidity Tester Initialized");
     }
   
     Serial.print("Heater Enabled State: ");
@@ -61,7 +61,7 @@ public:
       return h;
     } 
     else { 
-      Serial.println("Failed to read humidity");
+      Serial.println("Failed to read air humidity");
     }
     return 0;
   }

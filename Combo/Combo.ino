@@ -1,29 +1,57 @@
-//Sun Sensor has no includes
 #include <Arduino.h>
 #include "SunSensor.h"
 #include "SoilMoisture.h"
 #include "Sleep.h"
 #include "Clock.h"
 #include "SDCard.h"
-#include "HumiditySensor.h"
+#include "AirHumiditySensor.h"
+#include "SoilHumiditySensor.h"
+
+//*****************************************************************
+// PINS
+
+//SunSensorPins
+int sunPin = A0;
+int resetPin = 12;
+
+//SoilMoisturePins
+int soilPin = A1;
+int soilPower = 52;
+
+//SDCardPins
+int chipSelectPin = 53;
+
+//SoilHumidityTempPins
+int dataPin = 10;
+int clockPin = 11;
+
+//****************************************************************
+//OBJECTS
 
 //Sun Sensor Object 
-SunSensor sun = SunSensor(A0, 12); //(sunPin, resetPin)
+SunSensor sun = SunSensor(sunPin, resetPin);
 
 //Soil Moisture Sensor Object
-SoilSensor moisture = SoilSensor(A1, 52); //(soilPin, soilPower)
+SoilSensor moisture = SoilSensor(soilPin, soilPower);
 
 //Sleep is a static class
 
 //Clock is a static class
 
 //SD Card Reader Object
-SDCard memoryCard = SDCard(53); //(chipSelectPin)
+SDCard memoryCard = SDCard(chipSelectPin);
 
-//Humidity Sensor Object
-HumiditySensor humidity = HumiditySensor();
+//Air Humidity Sensor Object
+AirHumiditySensor airHumidity = AirHumiditySensor();
+
+//Soil Humidity Sensor Object
+SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
+
+//**********************************************************************************
+//MAIN
   
 void setup() {
+  //TODO soilhumiditysensor uses different serial in example??
   //One serial for all devices
   Serial.begin(9600);
   while(!Serial); // wait for Arduino Serial Monitor (native USB boards)
@@ -34,7 +62,7 @@ void setup() {
   Sleep::initialize();
   Clock::initialize();
   memoryCard.initialize();
-  humidity.initialize();
+  airHumidity.initialize();
 }
 
 void loop() {
@@ -46,18 +74,18 @@ void loop() {
   //Soil Moisture Loop
   moisture.readMoisture();
 
-  //Humidity Loop
-  humidity.readTemperature();
-  humidity.readHumidity();
+  //Air Humidity Loop
+  airHumidity.readTemperature();
+  airHumidity.readHumidity();
 
   //WARNING this is based on number of times
   //the loop function has been called.
   //could be a good idea to alter it to be
   //based on time.
-  //if (humidity.loopCnt >= 30) {
-  //  humidity.switchHeater();
+  //if (airHumidity.loopCnt >= 30) {
+  //  airHumidity.switchHeater();
   //}
-  humidity.loopCnt++;
+  airHumidity.loopCnt++;
 
   //Clock Loop
   Clock::printDateTime();
@@ -72,4 +100,19 @@ void loop() {
   //Sleep Test
   Sleep::goToSleep(10000);
   Sleep::wakeUp();
+
+  //sendData();
+}
+
+//*****************************************************************************
+//MAIN FUNCTIONS
+
+//TODO would send a string of data to somewhere
+String sendData() {
+  String data = String(sun.readSunlight()) + "/" +
+                String(airHumidity.readTemperature()) + "/" +
+                String(airHumidity.readHumidity()) + "/" +
+                String(soilHumidity.readTemperatureFahrenheit()) + "/" +
+                String(soilHumidity.readHumidity());
+  return data;
 }

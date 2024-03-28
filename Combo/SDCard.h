@@ -20,7 +20,7 @@ public:
     chipSelectPin = 0;
   }
   
-  //constructor that sets sunPin and resetPin
+  //constructor that sets chipSelectPin
   SDCard(int csp):chipSelectPin(csp){}
   
 //*************************************************************************
