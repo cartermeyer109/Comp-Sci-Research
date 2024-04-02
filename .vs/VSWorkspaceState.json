@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Combo"
   ],
-  "SelectedNode": "\\SoilHumiditySensor.h",
+  "SelectedNode": "\\Combo\\Combo.ino",
   "PreviewInSolutionExplorer": false
 }

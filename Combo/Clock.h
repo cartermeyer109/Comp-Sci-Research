@@ -1,11 +1,9 @@
 #include <DS3231.h>
 
-DS3231  rtc(SDA, SCL);
 Time t;
 
 //A class to store clock pin vars
-//and functions. Multiple class instances can be created
-//to use clocks
+//and functions.
 class Clock {
 public:
 //MEMBER FUNCTIONS
@@ -40,8 +38,11 @@ public:
   //sets year, month, day
   static void setDate(int y, int m, int d) {
     t.year = y;
+    //rtc.setYear(y);
     t.mon = m;
+    //rtc.setMonth(m);
     t.date = d;
+    //rtc.setDate(d);
   }
 };
 

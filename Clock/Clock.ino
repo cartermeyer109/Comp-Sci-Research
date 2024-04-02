@@ -41,7 +41,7 @@
 #include <DS3231.h>
 
 // Init the DS3231 using the hardware interface
-DS3231  rtc(SDA, SCL);
+DS3231  rtc(A4, A5);
 
 Time t;
 
@@ -74,13 +74,19 @@ void loop()
   
   // Send Unixtime for 00:00:00 on January 1th 2014
   Serial.print("Unixtime for 00:00:00 on January 1th 2014: ");
-  t.hour = 0;
-  t.min = 0;
+  t.hour = 14;
+  t.min = 40;
   t.sec = 0;
-  t.year = 2014;
-  t.mon = 1;
-  t.date = 1;
-  Serial.println(rtc.getUnixTime(t));
+  t.year = 2024;
+  t.mon = 4;
+  t.date = 2;
+  //Serial.println(rtc.getUnixTime(t));
+  Serial.print("Current Time.............................: ");
+  Serial.print(rtc.getDOWStr());
+  Serial.print(" ");
+  Serial.print(rtc.getDateStr());
+  Serial.print(" -- ");
+  Serial.println(rtc.getTimeStr());
 
   // Wait indefinitely
   while (1) {};
