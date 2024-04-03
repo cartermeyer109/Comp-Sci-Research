@@ -56,7 +56,7 @@ SoilSensor moisture = SoilSensor(soilPin, soilPower);
 //Clock is a static class
 //all functions are used with Clock::
 DS3231  rtc(clockSDA, clockSDL);
-#include "Clock.h"
+#include "Clock.h" //This must be included after rtc because the class uses rtc
 
 //SD Card Reader Object
 SDCard memoryCard = SDCard(chipSelectPin);
