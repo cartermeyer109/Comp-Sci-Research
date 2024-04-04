@@ -1,4 +1,3 @@
-//TODO Figure out how to set time
 #include <Arduino.h>
 #include "SunSensor.h"
 #include "SoilMoisture.h"
@@ -52,8 +51,9 @@ SunSensor sun = SunSensor(sunPin, sunPower);
 SoilSensor moisture = SoilSensor(soilPin, soilPower);
 
 //Sleep is a static class
+//all functions are used with Sleep::
 
-//Clock is a static class
+//Clock is a static class: TESTED, TODO need to get setting normal time to work
 //all functions are used with Clock::
 DS3231  rtc(clockSDA, clockSDL);
 #include "Clock.h" //This must be included after rtc because the class uses rtc
@@ -79,19 +79,21 @@ void setup() {
   while(!Serial); // wait for Arduino Serial Monitor (native USB boards)
 
   //Initializations
+  Clock::initialize();
+  memoryCard.initialize();
+
   //sun.initialize();
   //moisture.initialize();
   //Sleep::initialize();
-  Clock::initialize();
-  
-  //Clock::setDate(24, 4, 2);
-  //Clock::setTime(14, 31, 30);
-  //memoryCard.initialize();
   //airHumidity.initialize();
   //weather.initialize();
 }
 
 void loop() {
+  //Clock Loop
+  Clock::printDateTime();
+  Clock::printUnixDateTime();
+
 //  //Sun Sensor Loop
 //  sun.readSunlight();
 //  delay(1000);
@@ -112,10 +114,6 @@ void loop() {
 //  //  airHumidity.switchHeater();
 //  //}
 //  airHumidity.loopCnt++;
-
-  //Clock Loop
-  Clock::printDateTime();
-  Clock::printUnixDateTime();
 
 //  //SDCard Loop
 //  //WARNING: will create files if they don't

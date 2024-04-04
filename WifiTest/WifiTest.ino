@@ -1,28 +1,36 @@
 #include <WiFi101.h>
-
-char ssid[] = "StoutNonSecured";     //  your network SSID (name) 
-char pass[] = "";    // your network password
-int status = WL_IDLE_STATUS;     // the Wifi radio's status
-
-void setup() {
-  // initialize serial:
-  Serial.begin(9600);
-  Serial.println("Attempting to connect to WPA2 network...");
-  status = WiFi.begin(ssid);
-
-  // if you're not connected, stop here:
  
-    while(status != WL_CONNECTED){
-      delay(10000);
-      Serial.begin(9600);
-      Serial.println("Attempting to connect to WPA2 network...");
-      status = WiFi.begin(ssid);
-    }
-  // if you are connected, print out info about the connection:
-    Serial.println("Connected to network");
-  
+char ssid[] = "StoutNonSecure";       //WiFI connecion SSID
+WiFiClient client;
+int status = WL_IDLE_STATUS;
+ 
+void setup() {
+  WiFi.setPins(8,7,4);
+  randomSeed(analogRead(0));
+  Serial.begin(9600);
+ 
+  // check for the presence of the shield:
+  if (WiFi.status() == WL_NO_SHIELD) {
+    Serial.println("WiFi shield not present");
+    // don't continue:
+    while (true);
+  }
+ 
+  // attempt to connect to Wifi network:
+  while ( status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to: ");
+    Serial.println(ssid);
+    status = WiFi.begin(ssid);
+ 
+    // wait 10 seconds for connection:
+    delay(10000);
+  }
+
+  Serial.print("Connected to WiFi network: ");
+  Serial.println(ssid);
+ 
 }
 
 void loop() {
-  // do nothing
+  
 }
