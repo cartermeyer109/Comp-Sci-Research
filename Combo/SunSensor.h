@@ -47,8 +47,8 @@ public:
   //Turns reset pin to low after 10 seconds, to be implimented later on all devices
   void setLow(){
     Serial.println("resetting sun sensor");
-    delay(10000);
+    //delay(10000); //10 seconds
     digitalWrite(sunPower, LOW);
-    Serial.println("If you see this it not work");
+    Serial.println("sun sensor did not reset");
   }
 };

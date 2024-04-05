@@ -1,3 +1,7 @@
+//TODO, impliment wifi
+//TODO impliment rainfall as its own class,
+//then remove rainfall related stuff from weather kit
+
 #include <Arduino.h>
 #include "SunSensor.h"
 #include "SoilMoisture.h"
@@ -36,15 +40,14 @@ int dataPin = 10;
 int clockPin = 11;
 
 //WeatherMeterPins
-//TODO: board only has 2 pins used, but the code requires 3 pins
 int windDirectionPin = 3;
-int windSpeedPin = -1; //Unkown if this pin is needed
+int windSpeedPin = A2; 
 int rainfallPin = 9;
 
 //****************************************************************
 //OBJECTS
 
-//Sun Sensor Object 
+//Sun Sensor Object: TESTED - WORKS
 SunSensor sun = SunSensor(sunPin, sunPower);
 
 //Soil Moisture Sensor Object
@@ -53,12 +56,12 @@ SoilSensor moisture = SoilSensor(soilPin, soilPower);
 //Sleep is a static class
 //all functions are used with Sleep::
 
-//Clock is a static class: TESTED, TODO need to get setting normal time to work
+//Clock is a static class: TESTED - TODO need to get setting normal time to work
 //all functions are used with Clock::
 DS3231  rtc(clockSDA, clockSDL);
 #include "Clock.h" //This must be included after rtc because the class uses rtc
 
-//SD Card Reader Object
+//SD Card Reader Object: TESTED - WORKS
 SDCard memoryCard = SDCard(chipSelectPin);
 
 //Air Humidity Sensor Object
@@ -67,7 +70,10 @@ AirHumiditySensor airHumidity = AirHumiditySensor();
 //Soil Humidity Sensor Object
 SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
 
+//Weather Meter Object
 WeatherMeter weather = WeatherMeter(windDirectionPin, windSpeedPin, rainfallPin);
+
+//TODO Wifi sheild currently not working with one of the boards
 
 //**********************************************************************************
 //MAIN
@@ -79,26 +85,31 @@ void setup() {
   while(!Serial); // wait for Arduino Serial Monitor (native USB boards)
 
   //Initializations
-  Clock::initialize();
-  memoryCard.initialize();
-
+  //Clock::initialize();
+  //memoryCard.initialize();
   //sun.initialize();
+  weather.initialize();
+
   //moisture.initialize();
   //Sleep::initialize();
   //airHumidity.initialize();
-  //weather.initialize();
 }
 
 void loop() {
-  //Clock Loop
-  Clock::printDateTime();
-  Clock::printUnixDateTime();
+//Clock TEST
+  //Clock::printDateTime();
+  //Clock::printUnixDateTime();
 
-//  //Sun Sensor Loop
-//  sun.readSunlight();
-//  delay(1000);
-//  sun.setLow();
-//
+//Memory Card TEST is the initialization
+
+//Sun Sensor TEST
+  //sun.readSunlight();
+
+  //weather.readWindDirection();
+  //weather.readWindSpeed();
+  weather.readRainfall();
+  delay(1000);
+
 //  //Soil Moisture Loop
 //  moisture.readMoisture();
 //
@@ -126,7 +137,6 @@ void loop() {
 //  Sleep::wakeUp();
 
   //sendData();
-  delay(1000);
 }
 
 //*****************************************************************************

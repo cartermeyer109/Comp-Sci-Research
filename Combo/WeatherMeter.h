@@ -68,25 +68,25 @@ public:
     
     //prints and returns wind direction
     int readWindDirection() {
-        Serial.print(F("Wind direction (degrees): "));
+        Serial.println(F("Wind direction (degrees): "));
         windDirection = kit.getWindDirection();
-        Serial.print(windDirection, 1);
+        Serial.println(windDirection, 1);
         return windDirection;
     }
 
     //prints and returns wind speed
     int readWindSpeed() {
-        Serial.print(F("Wind speed (kph): "));
+        Serial.println(F("Wind speed (kph): "));
         windSpeed = kit.getWindSpeed();
-        Serial.print(windSpeed, 1);
+        Serial.println(windSpeed, 1);
         return windSpeed;
     }
 
     //prints and return total rainfall
     int readRainfall() {
-        Serial.print(F("Wind direction (degrees): "));
+        Serial.println(F("Rainfall (mm): "));
         rainfall = kit.getTotalRainfall();
-        Serial.print(rainfall, 1);
+        Serial.println(rainfall, 1);
         return rainfall;
     }
 };
