@@ -78,10 +78,10 @@ void rainFall_function()
    Serial.print(dailyRain_in_15_Second,8);
    Serial.println(" ml");
 
-//    Serial.print("RainAmount minute second: ");   
-//    minuteRain= dailyRain_in_15_Second;
-//   Serial.print(minuteRain,8);
-//   Serial.println(" ml");
+    Serial.print("RainAmount minute second: ");   
+    minuteRain= dailyRain_in_15_Second;
+   Serial.print(minuteRain,8);
+   Serial.println(" ml");
 
    
 }
