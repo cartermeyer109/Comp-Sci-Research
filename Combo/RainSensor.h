@@ -1,4 +1,3 @@
-
 //A class to store rain sensors pin vars, data vars,
 //and functions. Multiple class instances can be created
 //to use multiple rain sensors
@@ -8,8 +7,8 @@ public:
   int rainPin;
   int dropCount;
   bool dropBucketPosition;
-  const static double bucketAmount{0.11 * 16.3871}; //inches -> ml
-  double minuteRainVol;
+  static constexpr double bucketAmount{0.11 * 16.3871}; //inches -> ml
+  double rainAmount; //ml
   
 //*************************************************************************
 //CONSTRUCTORS
@@ -18,21 +17,21 @@ public:
     rainPin = 0;
     dropCount = 0;
     dropBucketPosition = true;
-    minuteRainVol = 0;
+    rainAmount = 0;
   }
   
-  //constructor that sets sunPin and sunPower
+  //constructor that sets pins
   RainSensor(int rp):rainPin(rp){
     dropCount = 0;
     dropBucketPosition = true;
-    minuteRainVol = 0;
+    rainAmount = 0;
   }
   
 //*************************************************************************
 //MEMBER FUNCTIONS
   //To be called in setup
   void initialize() {
-    pinMode(RainPin, INPUT_PULLUP);
+    pinMode(rainPin, INPUT_PULLUP);
     Serial.println("Rainfall gauge Ready");
   }
   
@@ -41,23 +40,23 @@ public:
     rainPin = rp;
   }
 
-  //*****TODO \/ \/ \/
-
-  //Instantly returns the sunlight value being gathered
-  //by the sun sensor after printing it to serial
-  int readSunlight(){
-    sunVal = analogRead(sunPin);
-    Serial.print("Sunlight Level: ");
-    Serial.println(sunVal);
-    //delay(1000);
-    return sunVal;
+  //Adds or does not add the bucketamount to the rain value
+  int checkBucket(){
+     if ((dropBucketPosition==false)&&(digitalRead(rainPin)==HIGH)){
+      dropBucketPosition=true;
+      rainAmount += bucketAmount;  // update the total rain
+      dropCount++;
+      Serial.println("I am tipped");
+   
+     }
+  
+    if ((dropBucketPosition==true)&&(digitalRead(rainPin)==LOW)){
+       dropBucketPosition=false;  
+        Serial.println("I am NOT tipped");
+    } 
   }
 
-  //Turns reset pin to low after 10 seconds, to be implimented later on all devices
-  void setLow(){
-    Serial.println("resetting sun sensor");
-    //delay(10000); //10 seconds
-    digitalWrite(sunPower, LOW);
-    Serial.println("sun sensor did not reset");
+  void resetRain() {
+    rainAmount = 0;
   }
 };
