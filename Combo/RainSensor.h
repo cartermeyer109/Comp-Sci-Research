@@ -59,4 +59,6 @@ public:
   void resetRain() {
     rainAmount = 0;
   }
+
+  //TODO need sleep and wake functions
 };

@@ -97,5 +97,7 @@ public:
     else
       Serial.println("DISABLED");
   }
+
+  //TODO Need sleep and wake functions
   
 };

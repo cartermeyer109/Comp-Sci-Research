@@ -29,14 +29,14 @@ public:
   }
 
   //Sets hour, minutes, and seconds
-  static void setTime(int h, int m, int s) {
+  static void setUnixTime(int h, int m, int s) {
     t.hour = h;
     t.min = m;
     t.sec = s;
   }
 
   //sets year, month, day
-  static void setDate(int y, int m, int d) {
+  static void setUnixDate(int y, int m, int d) {
     t.year = y;
     //rtc.setYear(y);
     t.mon = m;
@@ -44,6 +44,14 @@ public:
     t.date = d;
     //rtc.setDate(d);
   }
+
+  //Use these to set time
+  //rtc.setDOW(MONDAY);// Set Day-of-Week to MONDAY
+  //rtc.setTime(10,21,0);// Set the time to 12:00:00 (24hr format)
+  //rtc.setDate(3,6,2019);// (day, month, year)
+
+  //Maybe need sleep and wake?
+  
 };
 
 //PIN DIRECTIONS***********************************************************

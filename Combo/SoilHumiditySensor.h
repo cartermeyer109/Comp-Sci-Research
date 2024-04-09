@@ -66,4 +66,7 @@ public:
     Serial.print(humidity);
     Serial.println("%"); 
   }
+
+  //Need sleep and wake functions
+
 };

@@ -40,15 +40,16 @@ public:
     sunVal = analogRead(sunPin);
     Serial.print("Sunlight Level: ");
     Serial.println(sunVal);
-    //delay(1000);
     return sunVal;
   }
 
   //Turns reset pin to low after 10 seconds, to be implimented later on all devices
   void setLow(){
     Serial.println("resetting sun sensor");
-    //delay(10000); //10 seconds
     digitalWrite(sunPower, LOW);
     Serial.println("sun sensor did not reset");
   }
+
+  //TODO need setHigh function or try encorporating high and low
+  //into the read function
 };

@@ -139,4 +139,11 @@ public:
     }
     Serial.println();
   }
+
+  bool checkConnection() {
+    if (status == WL_CONNECTED) return true;
+    return false;
+  }
+
+  //TODO maybe need sleep and wake??
 };

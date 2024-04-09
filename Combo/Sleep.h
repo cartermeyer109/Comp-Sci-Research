@@ -1,6 +1,6 @@
 #include <Adafruit_SleepyDog.h>
 
-//A class for making a device fall asleep
+//A class for making a device fall asleep, currently sends whole board to sleep
 class Sleep {
 public:
 //DATA MEMBERS

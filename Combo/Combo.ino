@@ -1,7 +1,7 @@
-//Impliment 30 second timer to send data (impliment loop code)
-//Impliment code to deal with if u disconnect from wifi 
+//TODOImpliment 30 second timer to send data (impliment loop code)
+//TODOImpliment code to deal with if u disconnect from wifi 
 // (Compare last time on server to current time) to know what data to send
-
+//TODO impliment sleep for each device indiviudall
 #include <Arduino.h>
 #include "SunSensor.h"
 #include "SoilMoisture.h"
@@ -19,7 +19,7 @@
 //PINS
 //ClockPins
 int clockSDA = A4;
-int clockSDL = A5;
+int clockSCL = A5;
 
 //SunSensorPins
 int sunPin = A0;
@@ -43,7 +43,7 @@ int dataPin = 10;
 int clockPin = 11;
 
 //WeatherMeterPins (Wind)
-int windDirectionPin = 3;
+int windDirectionPin = A3; //TODO these pins should actually be one pin
 int windSpeedPin = A2; 
 int weatherMeterRF = -1; //Needs to exist for the weather meter, but we use other code for the rainfall
 
@@ -65,88 +65,105 @@ String ssid = "StoutNonSecure";
 //****************************************************************
 //OBJECTS
 
-//Sun Sensor Object: TESTED - WORKS
+//**Sun Sensor Object
 SunSensor sun = SunSensor(sunPin, sunPower);
 
-//Soil Moisture Sensor Object
+//++Soil Moisture Sensor Object
 SoilSensor moisture = SoilSensor(soilPin, soilPower);
 
-//Sleep is a static class
-//all functions are used with Sleep::
+//XXSleep is a static class
+//XXall functions are used with Sleep::
 
-//Clock is a static class: TESTED - TODO need to get setting normal time to work, and perhaps getters
-//all functions are used with Clock::
-DS3231  rtc(clockSDA, clockSDL);
+//**Clock is a static class
+//**all functions are used with Clock::
+DS3231  rtc(clockSDA, clockSCL);
 #include "Clock.h" //This must be included after rtc because the class uses rtc
 
-//SD Card Reader Object: TESTED - WORKS
+//**SD Card Reader Object
 SDCard memoryCard = SDCard(chipSelectPin);
 
-//Air Humidity Sensor Object
+//++Air Humidity Sensor Object
 AirHumiditySensor airHumidity = AirHumiditySensor();
 
-//Soil Humidity Sensor Object
+//XXSoil Humidity Sensor Object
 SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
 
-//Weather Meter Object
+//++Weather Meter Object
 WeatherMeter wind = WeatherMeter(windDirectionPin, windSpeedPin, weatherMeterRF);
 
-//Rainfall Object: TESTED - WORKS on OG code, not tested on combo code
+//++Rainfall Object
 RainSensor rain = RainSensor(rainfallPin);
 
-//WiFi Object: TESTED - WORKS on OG code, not tested on combo code
+//++WiFi Object
 Wifi wifi = Wifi(ssid, CSPin, IRQPin, RSTPin);
 
 //**********************************************************************************
 //MAIN
 
+//vairables
 unsigned long startTime;
 int dataInterval = 30; //seconds
+String currentTime = rtc.getDOWStr()+rtc.getDateStr()rtc.getTimeStr();
+String wifiTime;
+bool wifiConnected;
   
 void setup() {
-  //TODO soilhumiditysensor and weather meter use different serial in example??
-  //One serial for all devices
-  Serial.begin(9600);
-  while(!Serial); // wait for Arduino Serial Monitor (native USB boards)
+    //One serial for all devices
+    Serial.begin(9600);
+    while(!Serial); // wait for Arduino Serial Monitor (native USB boards) TODO remove in final code
 
-  //Initializations
-  //Clock::initialize();
-  //memoryCard.initialize();
-  //sun.initialize();
-  // 
-  //rain.initialize();
-  //wind.initialize();
-
-  wifi.initialize();
-  //moisture.initialize();
-  //Sleep::initialize();
-  //airHumidity.initialize();
+    //Initializations
+    //Clock::initialize();
+    //memoryCard.initialize();
+    //sun.initialize();
+   
+    //rain.initialize();
+    //wind.initialize();
+    //wifi.initialize();
+    //moisture.initialize();
+    //Sleep::initialize();
+    //airHumidity.initialize();
 
 
 //FINAL CODE++++++++++++++++++++++++++++++++++++++
-  
-  
-  RTC_Millis rtc;
-  DateTime now = rtc.now();
-  startTime = millis();
+    startTime = millis();
 //++++++++++++++++++++++++++++++++++++++++++++++++
 }
 
 void loop() {
 //FINAL CODE++++++++++++++++++++++++++++++++++++++
-  rain.checkBucket();
+  rain.checkBucket(); //Rain data gathered always
+
+  //Get current time
+  currentTime = rtc.getDOWStr()+rtc.getDateStr()rtc.getTimeStr();
+
+  //If wifi is connected
+  if (wifi.checkConnection()) {
+
+    //Mark the last time connected to
+    //wifi as the current time
+    wifiTime = currentTime;
+
+    //If wifi was previously disconnected,
+    //consider it connected and sync data to the cloud
+    if (!wifiConnected) {
+      wifiConnected = true;
+      //***resync files
+    }
+  }
+  else if (wifiConnected) {
+    wifiConnected = false;
+  }
 
   //Run every 30 seconds
   if (millis() - startTime >= (dataInterval * 1000)) {
-    //turn on all other sensors
+    //***turn on all other sensors
     sendData();
-    //turn all other sensors off
+    //***turn all other sensors off
     rain.resetRain();
     startTime = millis();
   }
 //++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 
 //  wind.readWindDirection();
 //  wind.readWindSpeed();
@@ -184,10 +201,10 @@ void loop() {
 
 //TODO would send a string of data to somewhere
 String sendData() {
-  String data = String(sun.readSunlight()) + "/" +
+    String data = String(sun.readSunlight()) + "/" +
                 String(airHumidity.readTemperature()) + "/" +
                 String(airHumidity.readHumidity()) + "/" +
                 String(soilHumidity.readTemperatureFahrenheit()) + "/" +
                 String(soilHumidity.readHumidity());
-  return data;
+    return data;
 }
