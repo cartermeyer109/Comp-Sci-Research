@@ -1,5 +1,5 @@
 // ++++++++++++++++++  Wind speed and direction declarations ++++++++++++++++++
-const byte WSPEED = 2;
+const byte WSPEED = 3;
 const byte WDIR = A2;
 // ++++++++++++++++++  End of Wind speed and direction declarations ++++++++++++++++++
 
@@ -45,10 +45,21 @@ void wspeedIRQ()
 
 
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
+   Serial.begin(9600);
+
+   pinMode(WSPEED, INPUT_PULLUP); // input from wind meters windspeed sensor
  
-  
+   
+    seconds = 0;
+    lastSecond = millis();
+
+    // attach external interrupt pins to IRQ functions
+ 
+    attachInterrupt(1, wspeedIRQ, FALLING);
+    // turn on interrupts
+    interrupts();
+    Serial.println("Weather Shield online!");
+
 }
 
 void loop() {
