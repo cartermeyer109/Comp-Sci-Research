@@ -11,7 +11,7 @@ public:
     SFEWeatherMeterKit kit = SFEWeatherMeterKit(0, 0, 0);
     float windDirection;
     float windSpeed;
-    float rainfall;
+    //float rainfall;
 
 
 //*************************************************************************
@@ -23,7 +23,7 @@ public:
         rainfallPin = 0;
         windDirection = 0;
         windSpeed = 0;
-        rainfall = 0;
+        //rainfall = 0;
     }
 
     //consturctor to set all pins
@@ -32,7 +32,7 @@ public:
             kit = SFEWeatherMeterKit(windDirectionPin, windSpeedPin, rainfallPin);
             windDirection = 0;
             windSpeed = 0;
-            rainfall = 0;
+            //rainfall = 0;
     }
 
     //consturctor to set windDirection and rainfall pins,
@@ -43,7 +43,7 @@ public:
             windSpeedPin = 0;
             windDirection = 0;
             windSpeed = 0;
-            rainfall = 0;
+            //rainfall = 0;
     }
 
 //*************************************************************************
@@ -82,13 +82,13 @@ public:
         return windSpeed;
     }
 
-    //prints and return total rainfall
-    int readRainfall() {
-        Serial.println(F("Rainfall (mm): "));
-        rainfall = kit.getTotalRainfall();
-        Serial.println(rainfall, 1);
-        return rainfall;
-    }
+//    //prints and return total rainfall
+//    int readRainfall() {
+//        Serial.println(F("Rainfall (mm): "));
+//        rainfall = kit.getTotalRainfall();
+//        Serial.println(rainfall, 1);
+//        return rainfall;
+//    }
 };
 
 // Pins for Weather Carrier with ESP32 Processor Board

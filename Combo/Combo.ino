@@ -1,6 +1,6 @@
-//TODO, impliment wifi
-//TODO impliment rainfall as its own class,
-//then remove rainfall related stuff from weather kit
+//Impliment 30 second timer to send data (impliment loop code)
+//Impliment code to deal with if u disconnect from wifi 
+// (Compare last time on server to current time) to know what data to send
 
 #include <Arduino.h>
 #include "SunSensor.h"
@@ -11,6 +11,9 @@
 #include "SoilHumiditySensor.h"
 #include "WeatherMeter.h"
 #include <DS3231.h>
+#include "RainSensor.h"
+#include "Wifi.h"
+#include "RTClib.h"
 
 //*****************************************************************
 //PINS
@@ -39,10 +42,25 @@ int chipSelectPin = 53;
 int dataPin = 10;
 int clockPin = 11;
 
-//WeatherMeterPins
+//WeatherMeterPins (Wind)
 int windDirectionPin = 3;
 int windSpeedPin = A2; 
+int weatherMeterRF = -1; //Needs to exist for the weather meter, but we use other code for the rainfall
+
+//RainfallPins
 int rainfallPin = 9;
+
+//WifiPins
+int CSPin = 8;
+int IRQPin = 7;
+int RSTPin = 4;
+//Vin:5V
+//GND:GND
+//SCK/Clock:D52
+//MISO/DO:D50
+//MOSI/DI:D51
+//EN:5V
+String ssid = "StoutNonSecure";
 
 //****************************************************************
 //OBJECTS
@@ -56,7 +74,7 @@ SoilSensor moisture = SoilSensor(soilPin, soilPower);
 //Sleep is a static class
 //all functions are used with Sleep::
 
-//Clock is a static class: TESTED - TODO need to get setting normal time to work
+//Clock is a static class: TESTED - TODO need to get setting normal time to work, and perhaps getters
 //all functions are used with Clock::
 DS3231  rtc(clockSDA, clockSDL);
 #include "Clock.h" //This must be included after rtc because the class uses rtc
@@ -71,12 +89,19 @@ AirHumiditySensor airHumidity = AirHumiditySensor();
 SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
 
 //Weather Meter Object
-WeatherMeter weather = WeatherMeter(windDirectionPin, windSpeedPin, rainfallPin);
+WeatherMeter wind = WeatherMeter(windDirectionPin, windSpeedPin, weatherMeterRF);
 
-//TODO Wifi sheild currently not working with one of the boards
+//Rainfall Object: TESTED - WORKS on OG code, not tested on combo code
+RainSensor rain = RainSensor(rainfallPin);
+
+//WiFi Object: TESTED - WORKS on OG code, not tested on combo code
+Wifi wifi = Wifi(ssid, CSPin, IRQPin, RSTPin);
 
 //**********************************************************************************
 //MAIN
+
+unsigned long startTime;
+int dataInterval = 30; //seconds
   
 void setup() {
   //TODO soilhumiditysensor and weather meter use different serial in example??
@@ -88,27 +113,44 @@ void setup() {
   //Clock::initialize();
   //memoryCard.initialize();
   //sun.initialize();
-  weather.initialize();
+  // 
+  //rain.initialize();
+  //wind.initialize();
 
+  wifi.initialize();
   //moisture.initialize();
   //Sleep::initialize();
   //airHumidity.initialize();
+
+
+//FINAL CODE++++++++++++++++++++++++++++++++++++++
+  
+  
+  RTC_Millis rtc;
+  DateTime now = rtc.now();
+  startTime = millis();
+//++++++++++++++++++++++++++++++++++++++++++++++++
 }
 
 void loop() {
-//Clock TEST
-  //Clock::printDateTime();
-  //Clock::printUnixDateTime();
+//FINAL CODE++++++++++++++++++++++++++++++++++++++
+  rain.checkBucket();
 
-//Memory Card TEST is the initialization
+  //Run every 30 seconds
+  if (millis() - startTime >= (dataInterval * 1000)) {
+    //turn on all other sensors
+    sendData();
+    //turn all other sensors off
+    rain.resetRain();
+    startTime = millis();
+  }
+//++++++++++++++++++++++++++++++++++++++++++++++++
 
-//Sun Sensor TEST
-  //sun.readSunlight();
 
-  //weather.readWindDirection();
-  //weather.readWindSpeed();
-  weather.readRainfall();
-  delay(1000);
+
+//  wind.readWindDirection();
+//  wind.readWindSpeed();
+//  delay(1000);
 
 //  //Soil Moisture Loop
 //  moisture.readMoisture();
@@ -135,8 +177,6 @@ void loop() {
 //  //Sleep Test
 //  Sleep::goToSleep(10000);
 //  Sleep::wakeUp();
-
-  //sendData();
 }
 
 //*****************************************************************************
