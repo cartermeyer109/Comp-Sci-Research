@@ -2,6 +2,7 @@
 //TODOImpliment code to deal with if u disconnect from wifi 
 // (Compare last time on server to current time) to know what data to send
 //TODO impliment sleep for each device indiviudall
+//TODO turn weather meter into a wind class with the personal wind code
 #include <Arduino.h>
 #include "SunSensor.h"
 #include "SoilMoisture.h"
@@ -65,37 +66,37 @@ String ssid = "StoutNonSecure";
 //****************************************************************
 //OBJECTS
 
-//**Sun Sensor Object
+//WORKS**Sun Sensor Object
 SunSensor sun = SunSensor(sunPin, sunPower);
 
-//++Soil Moisture Sensor Object
-SoilSensor moisture = SoilSensor(soilPin, soilPower);
-
-//XXSleep is a static class
-//XXall functions are used with Sleep::
-
-//**Clock is a static class
-//**all functions are used with Clock::
+//WORKS**Clock is a static class
+//WORKS**all functions are used with Clock::
 DS3231  rtc(clockSDA, clockSCL);
 #include "Clock.h" //This must be included after rtc because the class uses rtc
 
-//**SD Card Reader Object
+//WORKS**SD Card Reader Object
 SDCard memoryCard = SDCard(chipSelectPin);
 
-//++Air Humidity Sensor Object
+//FINALTEST++Soil Moisture Sensor Object
+SoilSensor moisture = SoilSensor(soilPin, soilPower);
+
+//FINALTEST++Air Humidity Sensor Object
 AirHumiditySensor airHumidity = AirHumiditySensor();
 
-//XXSoil Humidity Sensor Object
-SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
-
-//++Weather Meter Object
+//FINALTEST++Weather Meter Object
 WeatherMeter wind = WeatherMeter(windDirectionPin, windSpeedPin, weatherMeterRF);
 
-//++Rainfall Object
+//FINALTEST++Rainfall Object
 RainSensor rain = RainSensor(rainfallPin);
 
-//++WiFi Object
+//FINALTEST++WiFi Object
 Wifi wifi = Wifi(ssid, CSPin, IRQPin, RSTPin);
+
+//NOT TESTEDxxSoil Humidity Sensor Object
+SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
+
+//NOT TESTEDxxSleep is a static class
+//NOT TESTEDxxall functions are used with Sleep::
 
 //**********************************************************************************
 //MAIN
