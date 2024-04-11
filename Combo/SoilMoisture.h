@@ -44,7 +44,7 @@ public:
     delay(10);//wait 10 milliseconds 
     moistureVal = analogRead(soilPin);//Read the SIG value form sensor 
     digitalWrite(soilPower, LOW);//turn "Off"
-    Serial.print(moistureVal);
+    Serial.println(moistureVal);
     return moistureVal;//send current moisture value
   }
 

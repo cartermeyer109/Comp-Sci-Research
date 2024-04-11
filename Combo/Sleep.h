@@ -12,6 +12,7 @@ public:
   static void initialize() {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH); // Show we're awake
+    int prevSleepTime = 0;
   }
   
   //Goes to sleep for as long as possible
@@ -23,7 +24,7 @@ public:
     // The actual amount of time spent in sleep will be returned (in 
     // milliseconds).
     digitalWrite(LED_BUILTIN, LOW); // Show we're asleep
-    int prevSleepTime = Watchdog.sleep();
+    prevSleepTime = Watchdog.sleep();
     return prevSleepTime;
   }
 
@@ -36,7 +37,7 @@ public:
     // The actual amount of time spent in sleep will be returned (in 
     // milliseconds).
     digitalWrite(LED_BUILTIN, LOW); // Show we're asleep
-    int prevSleepTime = Watchdog.sleep(ms);
+    prevSleepTime = Watchdog.sleep(ms);
     return prevSleepTime;
   }
 
@@ -57,4 +58,4 @@ public:
   }
 };
 
-int Sleep::prevSleepTime = 0;
+//int Sleep::prevSleepTime = 0;

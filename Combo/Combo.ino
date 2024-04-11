@@ -10,11 +10,11 @@
 #include "SDCard.h"
 #include "AirHumiditySensor.h"
 #include "SoilHumiditySensor.h"
-#include "WeatherMeter.h"
 #include <DS3231.h>
 #include "RainSensor.h"
 #include "Wifi.h"
 #include "RTClib.h"
+#include "WindSensor.h"
 
 //*****************************************************************
 //PINS
@@ -46,7 +46,6 @@ int clockPin = 11;
 //WeatherMeterPins (Wind)
 int windDirectionPin = A3; //TODO these pins should actually be one pin
 int windSpeedPin = A2; 
-int weatherMeterRF = -1; //Needs to exist for the weather meter, but we use other code for the rainfall
 
 //RainfallPins
 int rainfallPin = 9;
@@ -77,16 +76,7 @@ DS3231  rtc(clockSDA, clockSCL);
 //WORKS**SD Card Reader Object
 SDCard memoryCard = SDCard(chipSelectPin);
 
-//FINALTEST++Soil Moisture Sensor Object
-SoilSensor moisture = SoilSensor(soilPin, soilPower);
-
-//FINALTEST++Air Humidity Sensor Object
-AirHumiditySensor airHumidity = AirHumiditySensor();
-
-//FINALTEST++Weather Meter Object
-WeatherMeter wind = WeatherMeter(windDirectionPin, windSpeedPin, weatherMeterRF);
-
-//FINALTEST++Rainfall Object
+//WORKS**Rainfall Object
 RainSensor rain = RainSensor(rainfallPin);
 
 //FINALTEST++WiFi Object
@@ -95,16 +85,26 @@ Wifi wifi = Wifi(ssid, CSPin, IRQPin, RSTPin);
 //NOT TESTEDxxSoil Humidity Sensor Object
 SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
 
+//PRINTING WRONG VALUE (1023), WIRING ISSUE? - Soil Moisture Sensor Object
+SoilSensor moisture = SoilSensor(soilPin, soilPower);
+
+//COULD NOT FIND THE DEVICE - Air Humidity Sensor Object
+AirHumiditySensor airHumidity = AirHumiditySensor();
+
+//SPEED AND DIRECTION DO NOT SHOW UP - WindSensor Object
+WindSensor wind = WindSensor(windDirectionPin, windSpeedPin);
+
 //NOT TESTEDxxSleep is a static class
 //NOT TESTEDxxall functions are used with Sleep::
+//NEEDS REVAMPING
 
 //**********************************************************************************
 //MAIN
 
 //vairables
 unsigned long startTime;
-int dataInterval = 30; //seconds
-String currentTime = rtc.getDOWStr()+rtc.getDateStr()rtc.getTimeStr();
+int dataInterval = 5; //seconds
+String currentTime;
 String wifiTime;
 bool wifiConnected;
   
@@ -114,61 +114,69 @@ void setup() {
     while(!Serial); // wait for Arduino Serial Monitor (native USB boards) TODO remove in final code
 
     //Initializations
+    //**WORKING
     //Clock::initialize();
     //memoryCard.initialize();
     //sun.initialize();
-   
     //rain.initialize();
-    //wind.initialize();
-    //wifi.initialize();
-    //moisture.initialize();
-    //Sleep::initialize();
-    //airHumidity.initialize();
 
+    //**UNTESTED
+    //soilHumidity.initialize();
+    //wifi.initialize();
+    //Sleep::initialize();
+
+    //**NOT WORKING
+    //airHumidity.initialize();
+    //moisture.initialize();
+    //wind.initialize();
+                         
 
 //FINAL CODE++++++++++++++++++++++++++++++++++++++
-    startTime = millis();
+//    currentTime = String(rtc.getDOWStr())+" " 
+//                  + String(rtc.getDateStr())+" "
+//                  + String(rtc.getTimeStr());
+//    startTime = millis();
 //++++++++++++++++++++++++++++++++++++++++++++++++
 }
 
 void loop() {
 //FINAL CODE++++++++++++++++++++++++++++++++++++++
-  rain.checkBucket(); //Rain data gathered always
-
-  //Get current time
-  currentTime = rtc.getDOWStr()+rtc.getDateStr()rtc.getTimeStr();
-
-  //If wifi is connected
-  if (wifi.checkConnection()) {
-
-    //Mark the last time connected to
-    //wifi as the current time
-    wifiTime = currentTime;
-
-    //If wifi was previously disconnected,
-    //consider it connected and sync data to the cloud
-    if (!wifiConnected) {
-      wifiConnected = true;
-      //***resync files
-    }
-  }
-  else if (wifiConnected) {
-    wifiConnected = false;
-  }
-
-  //Run every 30 seconds
-  if (millis() - startTime >= (dataInterval * 1000)) {
-    //***turn on all other sensors
-    sendData();
-    //***turn all other sensors off
-    rain.resetRain();
-    startTime = millis();
-  }
+//  rain.checkBucket(); //Rain data gathered always
+//
+//  //Get current time
+//  currentTime = String(rtc.getDOWStr())+" " 
+//                + String(rtc.getDateStr())+" "
+//                + String(rtc.getTimeStr());//
+//
+//  //If wifi is connected
+//  if (wifi.checkConnection()) {
+//
+//    //Mark the last time connected to
+//    //wifi as the current time
+//    wifiTime = currentTime;
+//
+//    //If wifi was previously disconnected,
+//    //consider it connected and sync data to the cloud
+//    if (!wifiConnected) {
+//      wifiConnected = true;
+//      //***resync files
+//    }
+//  }
+//  else if (wifiConnected) {
+//    wifiConnected = false;
+//  }
+//
+//  //Run every 30 seconds
+//  if (millis() - startTime >= (dataInterval * 1000)) {
+//    //***turn on all other sensors
+//    //sendData();
+//    Serial.println(rain.rainAmount);
+//    //***turn all other sensors off
+//    rain.resetRain();
+//    startTime = millis();
+//  }
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
-//  wind.readWindDirection();
-//  wind.readWindSpeed();
-//  delay(1000);
 
 //  //Soil Moisture Loop
 //  moisture.readMoisture();

@@ -5,6 +5,46 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Combo.ino||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\Combo.ino||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\WindSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\WindSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilHumiditySensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\SoilHumiditySensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Sleep.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\Sleep.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SDCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\SDCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\RainSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\RainSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Clock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\Clock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\AirHumiditySensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\AirHumiditySensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilMoisture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\SoilMoisture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SunSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\SunSensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Wifi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Combo\\Wifi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +54,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AirHumiditySensor.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\AirHumiditySensor.h",
+              "RelativeDocumentMoniker": "Combo\\AirHumiditySensor.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\AirHumiditySensor.h",
+              "RelativeToolTip": "Combo\\AirHumiditySensor.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:48.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Clock.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Clock.h",
+              "RelativeDocumentMoniker": "Combo\\Clock.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Clock.h",
+              "RelativeToolTip": "Combo\\Clock.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:47.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RainSensor.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\RainSensor.h",
+              "RelativeDocumentMoniker": "Combo\\RainSensor.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\RainSensor.h",
+              "RelativeToolTip": "Combo\\RainSensor.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:46.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SDCard.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SDCard.h",
+              "RelativeDocumentMoniker": "Combo\\SDCard.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SDCard.h",
+              "RelativeToolTip": "Combo\\SDCard.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:45.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Sleep.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Sleep.h",
+              "RelativeDocumentMoniker": "Combo\\Sleep.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Sleep.h",
+              "RelativeToolTip": "Combo\\Sleep.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:44.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SoilHumiditySensor.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilHumiditySensor.h",
+              "RelativeDocumentMoniker": "Combo\\SoilHumiditySensor.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilHumiditySensor.h",
+              "RelativeToolTip": "Combo\\SoilHumiditySensor.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:43.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SoilMoisture.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilMoisture.h",
+              "RelativeDocumentMoniker": "Combo\\SoilMoisture.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SoilMoisture.h",
+              "RelativeToolTip": "Combo\\SoilMoisture.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:43.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SunSensor.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SunSensor.h",
+              "RelativeDocumentMoniker": "Combo\\SunSensor.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\SunSensor.h",
+              "RelativeToolTip": "Combo\\SunSensor.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:41.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Wifi.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Wifi.h",
+              "RelativeDocumentMoniker": "Combo\\Wifi.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Wifi.h",
+              "RelativeToolTip": "Combo\\Wifi.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T20:07:40.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WindSensor.h",
+              "DocumentMoniker": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\WindSensor.h",
+              "RelativeDocumentMoniker": "Combo\\WindSensor.h",
+              "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\WindSensor.h",
+              "RelativeToolTip": "Combo\\WindSensor.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-11T19:46:15.485Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -28,7 +198,7 @@
               "RelativeDocumentMoniker": "Combo\\Combo.ino",
               "ToolTip": "C:\\Users\\MeyerCarter\\Documents\\Comp-Sci-Research\\Combo\\Combo.ino",
               "RelativeToolTip": "Combo\\Combo.ino",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJkAAAAOAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASBSURBVDhPdVNdbBRVFP7md/\u002BnXXa7bWkpWAtR0rBYoqQYgQJC4oP64IONiSZKosZAIsboiwExJqjRhxJ5UhOe8MUYSBDRAmKCPojyTyuhYMCyv7awszszu3PvHc\u002Bd4g8GT/bsvXN\u002Bvnvud87F/8makRE0Wi0cv1HQt588ZUmVe2mTvrtKEATK7S1yuRwiHTls3b1bfWfr1uzDH3y4YrrhjNR9lm8J0SVjTFUtJg39TE8ifuzE66/9/NbYWHVsyxbRrJRRLpdDnBAwnc1i84634SxbHpmq2auu2vYLNuPrmBA5gUANI2\u002BLCkXoqlpO6frR/lTq034r\u002BUP87OnmJzu2Y7ZanQP8eN8\u002BfJfuiFyp1Z6oet4bAlimQNWUv\u002Bu/U4KAFIJrUM5mopH3\u002Bi1r/9rZSvOV0VE6kOTHeR3KtF0fLrvOm6qi5KOqqkVUBSYh3k2lT8bQkpc5MldiSCzlpaPHsffchY5sKvGRqumjpqaFhyiUSGXQj/7kXgqVFtrntqGPcS44Z/uqdmPbs4NLK5q3fiOsiLna4\u002BJV0zBTEcJbkIhjYTIByzDR4gJNwUMQyzBCe288joimwWUMnI7wGct1xmM//W7bl7XGiocgDGOzqhsbCFh9clEfnhm4Fw9k0ljZ2YF7rCSu2XYI9tySAWzq7cFQZh4e6e5ETFVxhXwu4zGn6RXKheK43tdm6UXO8zFV0YY7c3h8YR8\u002Bv3QJ52/W0BWL4an\u002BRdi2bDCsMBACX1y\u002BglmaxQVU6dMDAyh7Hg5ev661CIOwNJUbekxwkaMZw4O5DpwslDFerGCRZeGW72PPhUksTrdjoK0Ne85fhGnoWNvTjfFCCb9UK5SThUG5EoMRlurRaYwzMCJZENNy6iRjClUjvwUFy/mXDQiIN9kMRQTgMlZRaQUYzRk1BhJL9V3XDRgrNaiaE8UShqjKdfO7MdlwEI9G8fLS\u002B3CRBnZiZhYvLr0fDjXp6xtFrO\u002Bdj\u002BWZTJjjMB\u002BCMCSW5q4cFqqmDQamOVzwmUrPkYifj1UEnG9vx9TNmxib\u002BBXflyroSySwuiuHoWwGS6wUDvx2DQcLRTiuy0W9/qVdb3yrxHa\u002BS2QHm5RU6jM9ne6OaDp6YlFkTBMNGotp10WNhySAKCdfDAmK\u002BYOuJ31ypNjsTCGw689TyGEttW4DGq5TI1YXK5HoINd1ZZauP03dq1CSR3z9Ndge8Spt0idjGNmE5woCPOB73t6kaTqad\u002BwI4mtGXM7YjGj5eTUa6QSBhiC3lSBD/bdNStD0hF\u002BunKZ1V1TTJuyd26FJR9uCXjjJVFE0mxXSAUU3coquqwp1\u002BG4SEAWi0eCtcukMr9d3EWdHrWtXmXPu3BygMzUFJZXkaE9PiVZzgjfqetDyc0RDnEqjRs0NdUDXJR9nMzMlv1reLxznfUXwI8qlyWbj0CGAaJirXUosTo81BWx6jNhvy5JnSDH0tdDNPHStM7yz4CVKOhP4/jH6PoXarSoOfxWAnh8cJ4T5B/C/0tUNPLoRMEydOI2FNsZc\u002BC2G8W\u002BAQiE03SnAn/i/SDGHVXpAAAAAAElFTkSuQmCC",
               "WhenOpened": "2024-04-02T18:23:36.9Z",
               "EditorCaption": ""

@@ -43,21 +43,22 @@ public:
   //Adds or does not add the bucketamount to the rain value
   int checkBucket(){
      if ((dropBucketPosition==false)&&(digitalRead(rainPin)==HIGH)){
-      dropBucketPosition=true;
-      rainAmount += bucketAmount;  // update the total rain
-      dropCount++;
-      Serial.println("I am tipped");
-   
+       dropBucketPosition=true;
+       rainAmount += bucketAmount;  // update the total rain
+       dropCount++;
+       Serial.print("I am tipped");
+       Serial.println(", adding " + String(bucketAmount) + "ml");
      }
   
-    if ((dropBucketPosition==true)&&(digitalRead(rainPin)==LOW)){
+     if ((dropBucketPosition==true)&&(digitalRead(rainPin)==LOW)){
        dropBucketPosition=false;  
-        Serial.println("I am NOT tipped");
-    } 
+       Serial.println("I am NOT tipped");
+     } 
   }
 
   void resetRain() {
     rainAmount = 0;
+    dropCount = 0;
   }
 
   //TODO need sleep and wake functions

@@ -83,7 +83,7 @@ float current_wind_speed()
 {
     float deltaTime = millis() - lastWindCheck;    //750ms
 
-    deltaTime /= 1000.0; //Covert to seconds
+    deltaTime /= 1000.0; //Convert to seconds
 
     float windSpeed = (float)windClicks / deltaTime; //3 / 0.750s = 4
 
