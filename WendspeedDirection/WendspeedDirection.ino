@@ -1,5 +1,5 @@
 // ++++++++++++++++++  Wind speed and direction declarations ++++++++++++++++++
-const byte WSPEED = 3;
+const byte WSPEED = 2;
 const byte WDIR = A2;
 // ++++++++++++++++++  End of Wind speed and direction declarations ++++++++++++++++++
 
