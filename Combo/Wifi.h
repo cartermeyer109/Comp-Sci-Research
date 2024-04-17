@@ -68,6 +68,7 @@ public:
       // wait 10 seconds for connection:
       delay(10000);
     }
+    Serial.print("Wifi is connected!");
   }
 
   //Attemps a connection one time

@@ -2,7 +2,6 @@
 
 //A class to store Wind Sensor's pin vars and functions.
 //This class needed a cpp file to properly implement the interrupts
-
 class WindSensor {
 public:
 //DATA MEMBERS

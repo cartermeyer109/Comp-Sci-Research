@@ -41,13 +41,6 @@ void WindSensor::setPins(int wdp, int wsp) {
 
 //to be called in setup
 void WindSensor::initialize() {
-    windDirection = 0;
-    windSpeed = 0;
-    lastWindIRQ = 0;
-    windClicks = 0;
-    lastWindCheck = 0;
-    windSpeedMPH = 0;
-    
     pinMode(windSpeedPin, INPUT_PULLUP); // input from wind meters windspeed sensor
 
     //figure out these variables
