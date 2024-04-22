@@ -1,6 +1,6 @@
 #include <WiFi101.h>
 
-char ssid[] = "StoutNonSecure";     //  your network SSID (name) 
+char ssid[] = "StoutGuest";     //  your network SSID (name) 
 char pass[] = "";    // your network password
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
 
