@@ -1,5 +1,5 @@
-const int data = A0;
-int value = 0;
+const int DATA_PIN = A0;
+int waterValue = 0;
 
 const int PUMP_PIN = 13; // Water Pump Pin
 
@@ -12,10 +12,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  value = analogRead(data);
-  Serial.println(value);
+  waterValue = analogRead(DATA_PIN);
+  Serial.println(waterValue);
 
-  if (value > 600) {
+  if (waterValue > 600) {
     digitalWrite(PUMP_PIN, HIGH);
   }
   else {
@@ -23,5 +23,3 @@ void loop() {
   }
   delay(1000);
 }
-
-//600 is halfway point

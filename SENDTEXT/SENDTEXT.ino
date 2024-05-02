@@ -41,6 +41,13 @@ void smtpCallback(SMTP_Status status);
 int pinGPIO2 = 2; //To control LED
 int ledStatus = 0; //0=off,1=on,2=dimmed
 
+#WaterSensor Setup
+const int DATA_PIN = A0;
+int waterValue = 0;
+
+#Pump Setup
+const int PUMP_PIN = 13; // Water Pump Pin
+
 void setup(){
   Serial.begin(115200);
   
@@ -140,13 +147,34 @@ void setup(){
       Serial.println("\nConnected with no Auth.");
   }
 
-  /* Start sending Email and close the session */
-  if (!MailClient.sendMail(&smtp, &message))
-    ESP_MAIL_PRINTF("Error, Status Code: %d, Error Code: %d, Reason: %s", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
+//  /* Start sending Email and close the session */
+//  if (!MailClient.sendMail(&smtp, &message))
+//    ESP_MAIL_PRINTF("Error, Status Code: %d, Error Code: %d, Reason: %s", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
 
+  //WaterPump and Sensor setup
+  Serial.begin(9600);
+  pinMode(PUMP_PIN, OUTPUT);
+  digitalWrite(PUMP_PIN, HIGH);
 }
 
 void loop(){
+  // put your main code here, to run repeatedly:
+  waterValue = analogRead(DATA_PIN);
+  Serial.println(waterValue);
+
+  //600 is halfway point
+  if (waterValue > 600) {
+    digitalWrite(PUMP_PIN, HIGH);
+    if (waterValue > 800){
+      /* Start sending Email and close the session */
+      if (!MailClient.sendMail(&smtp, &message))
+        ESP_MAIL_PRINTF("Error, Status Code: %d, Error Code: %d, Reason: %s", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
+    }
+  }
+  else {
+    digitalWrite(PUMP_PIN, LOW);
+  }
+  delay(1000);
 }
 
 /* Callback function to get the Email sending status */
