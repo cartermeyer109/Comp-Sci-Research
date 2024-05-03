@@ -1,4 +1,4 @@
-#include <SHT1x.h>
+#include <Sensirion.h>
 
 //A class to store soil humidity vars and
 //functions. Multiple class instances can be created
@@ -8,27 +8,26 @@ public:
 //DATA MEMBERS
   int dataPin;
   int clockPin;
-  float temp_c;
-  float temp_f;
+  float temperature;
   float humidity;
-  SHT1x sensor = SHT1x(0, 0);
-  
+  float dewpoint;
+  Sensirion tempSensor = Sensirion(0, 0);  
 //*************************************************************************
 //CONSTRUCTORS
   //default constructor
   SoilHumiditySensor() {
     dataPin = -1;
     clockPin = -1;
-    temp_c = -1;
-    temp_f = -1;
+    temperature = -1;
     humidity = -1;
+    dewpoint = -1;
   }
 
   SoilHumiditySensor(int dp, int cp):dataPin(dp), clockPin(cp) {
-    temp_c = -1;
-    temp_f = -1;
+    temperature = -1;
     humidity = -1;
-    sensor = SHT1x(dataPin, clockPin);
+    dewpoint = -1;
+    tempSensor = Sensirion(dataPin, clockPin);
   }
   
 //*************************************************************************
@@ -39,34 +38,33 @@ public:
   void setPins(int dp, int cp) {
     dataPin = dp;
     clockPin = cp;
-    sensor = SHT1x(dataPin, clockPin);
+    tempSensor = Sensirion(dataPin, clockPin);
   }
   
   //Returns and prints temperature in celcius
   float readTemperatureCelcius() {
-    temp_c = sensor.readTemperatureC();
+    tempSensor.measure(&temperature, &humidity, &dewpoint);
     Serial.print("Temperature: ");
-    Serial.print(temp_c, DEC);
-    Serial.print("C.");
-  }
-
-  //Returns and prints temperature in fahrenheit
-  float readTemperatureFahrenheit() {
-    temp_f = sensor.readTemperatureF();
-    Serial.print("Temperature: ");
-    Serial.print(temp_f, DEC);
-    Serial.print("F.");
+    Serial.print(temperature);
+    Serial.println(" C");
+    return temperature;
   }
 
   //Returns and prints humidity
   float readHumidity() {
-    humidity = sensor.readHumidity();
+    tempSensor.measure(&temperature, &humidity, &dewpoint);
     Serial.print("Humidity: ");
-    Serial.print(temp_f, DEC);
     Serial.print(humidity);
-    Serial.println("%"); 
+    Serial.println(" %");
+    return humidity;
   }
 
-  //Need sleep and wake functions
+  float readDewpoint() {
+    tempSensor.measure(&temperature, &humidity, &dewpoint);
+    Serial.print("Dewpoint: ");
+    Serial.print(dewpoint);
+    Serial.println(" C");
+    return dewpoint;
+  }
 
 };

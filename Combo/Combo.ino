@@ -84,7 +84,7 @@ RainSensor rain = RainSensor(rainfallPin);
 //FINALTEST++WiFi Object
 Wifi wifi = Wifi(ssid, CSPin, IRQPin, RSTPin);
 
-//CURRENTLY NOT WORKING ON MAIN BOARD - Soil Humidity Sensor Object
+//WORKS***Soil Humidity Sensor Object
 SoilHumiditySensor soilHumidity = SoilHumiditySensor(dataPin, clockPin);
 
 //REDO FEMALE CONNECTION (KEEPS PRINTING 1023) - Soil Moisture Sensor Object
@@ -119,9 +119,9 @@ void setup() {
     //sun.initialize();
     //rain.initialize();
     //windInitialize();
+    soilHumidity.initialize();
 
     //**UNTESTED
-    //soilHumidity.initialize();
     //wifi.initialize();
     //Sleep::initialize();
 
@@ -176,9 +176,13 @@ void loop() {
 //  }
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
+  soilHumidity.readHumidity();
+  soilHumidity.readTemperatureCelcius();
+  soilHumidity.readDewpoint();
 
-//  //Soil Moisture Loop
-//  moisture.readMoisture();
+  delay(2000);
+  //Soil Moisture Loop
+  //moisture.readMoisture();
 //
 //  //Air Humidity Loop
 //  airHumidity.readTemperature();
@@ -208,12 +212,12 @@ void loop() {
 //MAIN FUNCTIONS
 
 //TODO would send a string of data to somewhere
-//TODO figure out how we want to do setting device high and low (seperate functions or within the read functions)
-String sendData() {
-    String data = String(sun.readSunlight()) + "/" +
-                String(airHumidity.readTemperature()) + "/" +
-                String(airHumidity.readHumidity()) + "/" +
-                String(soilHumidity.readTemperatureFahrenheit()) + "/" +
-                String(soilHumidity.readHumidity());
-    return data;
-}
+////TODO figure out how we want to do setting device high and low (seperate functions or within the read functions)
+//String sendData() {
+//    String data = String(sun.readSunlight()) + "/" +
+//                String(airHumidity.readTemperature()) + "/" +
+//                String(airHumidity.readHumidity()) + "/" +
+//                String(soilHumidity.readTemperatureFahrenheit()) + "/" +
+//                String(soilHumidity.readHumidity());
+//    return data;
+//}
